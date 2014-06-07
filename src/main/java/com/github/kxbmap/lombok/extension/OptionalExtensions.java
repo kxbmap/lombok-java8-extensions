@@ -49,7 +49,7 @@ public class OptionalExtensions {
     /**
      * map Optional&lt;T&gt; to OptionalInt
      */
-    public static <T> OptionalInt mapToInt(Optional<T> opt, ToIntFunction<T> mapper) {
+    public static <T> OptionalInt mapToInt(Optional<T> opt, ToIntFunction<? super T> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? OptionalInt.of(mapper.applyAsInt(opt.get())) : OptionalInt.empty();
     }
@@ -57,7 +57,7 @@ public class OptionalExtensions {
     /**
      * map Optional&lt;T&gt; to OptionalLong
      */
-    public static <T> OptionalLong mapToLong(Optional<T> opt, ToLongFunction<T> mapper) {
+    public static <T> OptionalLong mapToLong(Optional<T> opt, ToLongFunction<? super T> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? OptionalLong.of(mapper.applyAsLong(opt.get())) : OptionalLong.empty();
     }
@@ -65,7 +65,7 @@ public class OptionalExtensions {
     /**
      * map Optional&lt;T&gt; to OptionalDouble
      */
-    public static <T> OptionalDouble mapToDouble(Optional<T> opt, ToDoubleFunction<T> mapper) {
+    public static <T> OptionalDouble mapToDouble(Optional<T> opt, ToDoubleFunction<? super T> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? OptionalDouble.of(mapper.applyAsDouble(opt.get())) : OptionalDouble.empty();
     }
@@ -100,7 +100,7 @@ public class OptionalExtensions {
     /**
      * map OptionalInt to Optional&lt;T&gt;
      */
-    public static <T> Optional<T> mapToObj(OptionalInt opt, IntFunction<T> mapper) {
+    public static <T> Optional<T> mapToObj(OptionalInt opt, IntFunction<? extends T> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? Optional.ofNullable(mapper.apply(opt.getAsInt())) : Optional.empty();
     }
@@ -135,7 +135,7 @@ public class OptionalExtensions {
     /**
      * map OptionalLong to Optional&lt;T&gt;
      */
-    public static <T> Optional<T> mapToObj(OptionalLong opt, LongFunction<T> mapper) {
+    public static <T> Optional<T> mapToObj(OptionalLong opt, LongFunction<? extends T> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? Optional.ofNullable(mapper.apply(opt.getAsLong())) : Optional.empty();
     }
@@ -170,7 +170,7 @@ public class OptionalExtensions {
     /**
      * map OptionalDouble to Optional&lt;T&gt;
      */
-    public static <T> Optional<T> mapToObj(OptionalDouble opt, DoubleFunction<T> mapper) {
+    public static <T> Optional<T> mapToObj(OptionalDouble opt, DoubleFunction<? extends T> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? Optional.ofNullable(mapper.apply(opt.getAsDouble())) : Optional.empty();
     }
@@ -181,7 +181,7 @@ public class OptionalExtensions {
     /**
      * flatMap Optional&lt;T&gt; to OptionalInt
      */
-    public static <T> OptionalInt flatMapToInt(Optional<T> opt, Function<T, OptionalInt> mapper) {
+    public static <T> OptionalInt flatMapToInt(Optional<T> opt, Function<? super T, OptionalInt> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? requireNonNull(mapper.apply(opt.get())) : OptionalInt.empty();
     }
@@ -189,7 +189,7 @@ public class OptionalExtensions {
     /**
      * flatMap Optional&lt;T&gt; to OptionalLong
      */
-    public static <T> OptionalLong flatMapToLong(Optional<T> opt, Function<T, OptionalLong> mapper) {
+    public static <T> OptionalLong flatMapToLong(Optional<T> opt, Function<? super T, OptionalLong> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? requireNonNull(mapper.apply(opt.get())) : OptionalLong.empty();
     }
@@ -197,7 +197,7 @@ public class OptionalExtensions {
     /**
      * flatMap Optional&lt;T&gt; to OptionalDouble
      */
-    public static <T> OptionalDouble flatMapToDouble(Optional<T> opt, Function<T, OptionalDouble> mapper) {
+    public static <T> OptionalDouble flatMapToDouble(Optional<T> opt, Function<? super T, OptionalDouble> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? requireNonNull(mapper.apply(opt.get())) : OptionalDouble.empty();
     }
