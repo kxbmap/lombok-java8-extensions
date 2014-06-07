@@ -47,7 +47,7 @@ public class OptionalExtensions {
     // Optional<T> map
 
     /**
-     * map Optional&lt;T&gt; -> OptionalInt
+     * map Optional&lt;T&gt; to OptionalInt
      */
     public static <T> OptionalInt mapToInt(Optional<T> opt, ToIntFunction<T> mapper) {
         requireNonNull(mapper);
@@ -55,7 +55,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map Optional&lt;T&gt; -> OptionalLong
+     * map Optional&lt;T&gt; to OptionalLong
      */
     public static <T> OptionalLong mapToLong(Optional<T> opt, ToLongFunction<T> mapper) {
         requireNonNull(mapper);
@@ -63,7 +63,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map Optional&lt;T&gt; -> OptionalDouble
+     * map Optional&lt;T&gt; to OptionalDouble
      */
     public static <T> OptionalDouble mapToDouble(Optional<T> opt, ToDoubleFunction<T> mapper) {
         requireNonNull(mapper);
@@ -74,7 +74,7 @@ public class OptionalExtensions {
     // OptionalInt map
 
     /**
-     * map OptionalInt -> OptionalInt
+     * map OptionalInt to OptionalInt
      */
     public static OptionalInt map(OptionalInt opt, IntUnaryOperator mapper) {
         requireNonNull(mapper);
@@ -82,7 +82,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalInt -> OptionalLong
+     * map OptionalInt to OptionalLong
      */
     public static OptionalLong mapToLong(OptionalInt opt, IntToLongFunction mapper) {
         requireNonNull(mapper);
@@ -90,7 +90,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalInt -> OptionalDouble
+     * map OptionalInt to OptionalDouble
      */
     public static OptionalDouble mapToDouble(OptionalInt opt, IntToDoubleFunction mapper) {
         requireNonNull(mapper);
@@ -98,7 +98,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalInt -> Optional&lt;T&gt;
+     * map OptionalInt to Optional&lt;T&gt;
      */
     public static <T> Optional<T> mapToObj(OptionalInt opt, IntFunction<T> mapper) {
         requireNonNull(mapper);
@@ -109,7 +109,7 @@ public class OptionalExtensions {
     // OptionalLong map
 
     /**
-     * map OptionalLong -> OptionalLong
+     * map OptionalLong to OptionalLong
      */
     public static OptionalLong map(OptionalLong opt, LongUnaryOperator mapper) {
         requireNonNull(mapper);
@@ -117,7 +117,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalLong -> OptionalInt
+     * map OptionalLong to OptionalInt
      */
     public static OptionalInt mapToInt(OptionalLong opt, LongToIntFunction mapper) {
         requireNonNull(mapper);
@@ -125,7 +125,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalLong -> OptionalDouble
+     * map OptionalLong to OptionalDouble
      */
     public static OptionalDouble mapToDouble(OptionalLong opt, LongToDoubleFunction mapper) {
         requireNonNull(mapper);
@@ -133,7 +133,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalLong -> Optional&lt;T&gt;
+     * map OptionalLong to Optional&lt;T&gt;
      */
     public static <T> Optional<T> mapToObj(OptionalLong opt, LongFunction<T> mapper) {
         requireNonNull(mapper);
@@ -144,7 +144,7 @@ public class OptionalExtensions {
     // OptionalDouble map
 
     /**
-     * map OptionalDouble -> OptionalDouble
+     * map OptionalDouble to OptionalDouble
      */
     public static OptionalDouble map(OptionalDouble opt, DoubleUnaryOperator mapper) {
         requireNonNull(mapper);
@@ -152,7 +152,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalDouble -> OptionalInt
+     * map OptionalDouble to OptionalInt
      */
     public static OptionalInt mapToInt(OptionalDouble opt, DoubleToIntFunction mapper) {
         requireNonNull(mapper);
@@ -160,7 +160,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalDouble -> OptionalLong
+     * map OptionalDouble to OptionalLong
      */
     public static OptionalLong mapToLong(OptionalDouble opt, DoubleToLongFunction mapper) {
         requireNonNull(mapper);
@@ -168,7 +168,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * map OptionalDouble -> Optional&lt;T&gt;
+     * map OptionalDouble to Optional&lt;T&gt;
      */
     public static <T> Optional<T> mapToObj(OptionalDouble opt, DoubleFunction<T> mapper) {
         requireNonNull(mapper);
@@ -179,7 +179,7 @@ public class OptionalExtensions {
     // Optional<T> flatMap
 
     /**
-     * flatMap Optional&lt;T&gt; -> OptionalInt
+     * flatMap Optional&lt;T&gt; to OptionalInt
      */
     public static <T> OptionalInt flatMapToInt(Optional<T> opt, Function<T, OptionalInt> mapper) {
         requireNonNull(mapper);
@@ -187,7 +187,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap Optional&lt;T&gt; -> OptionalLong
+     * flatMap Optional&lt;T&gt; to OptionalLong
      */
     public static <T> OptionalLong flatMapToLong(Optional<T> opt, Function<T, OptionalLong> mapper) {
         requireNonNull(mapper);
@@ -195,7 +195,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap Optional&lt;T&gt; -> OptionalDouble
+     * flatMap Optional&lt;T&gt; to OptionalDouble
      */
     public static <T> OptionalDouble flatMapToDouble(Optional<T> opt, Function<T, OptionalDouble> mapper) {
         requireNonNull(mapper);
@@ -206,7 +206,7 @@ public class OptionalExtensions {
     // OptionalInt flatMap
 
     /**
-     * flatMap OptionalInt -> OptionalInt
+     * flatMap OptionalInt to OptionalInt
      */
     public static OptionalInt flatMap(OptionalInt opt, IntFunction<OptionalInt> mapper) {
         requireNonNull(mapper);
@@ -214,7 +214,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalInt -> OptionalLong
+     * flatMap OptionalInt to OptionalLong
      */
     public static OptionalLong flatMapToLong(OptionalInt opt, IntFunction<OptionalLong> mapper) {
         requireNonNull(mapper);
@@ -222,7 +222,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalInt -> OptionalDouble
+     * flatMap OptionalInt to OptionalDouble
      */
     public static OptionalDouble flatMapToDouble(OptionalInt opt, IntFunction<OptionalDouble> mapper) {
         requireNonNull(mapper);
@@ -230,7 +230,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalInt -> Optional&lt;T&gt;
+     * flatMap OptionalInt to Optional&lt;T&gt;
      */
     public static <T> Optional<T> flatMapToObj(OptionalInt opt, IntFunction<Optional<T>> mapper) {
         requireNonNull(mapper);
@@ -241,7 +241,7 @@ public class OptionalExtensions {
     // OptionalLong flatMap
 
     /**
-     * flatMap OptionalLong -> OptionalLong
+     * flatMap OptionalLong to OptionalLong
      */
     public static OptionalLong flatMap(OptionalLong opt, LongFunction<OptionalLong> mapper) {
         requireNonNull(mapper);
@@ -249,7 +249,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalLong -> OptionalInt
+     * flatMap OptionalLong to OptionalInt
      */
     public static OptionalInt flatMapToInt(OptionalLong opt, LongFunction<OptionalInt> mapper) {
         requireNonNull(mapper);
@@ -257,7 +257,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalLong -> OptionalDouble
+     * flatMap OptionalLong to OptionalDouble
      */
     public static OptionalDouble flatMapToDouble(OptionalLong opt, LongFunction<OptionalDouble> mapper) {
         requireNonNull(mapper);
@@ -265,7 +265,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalLong -> Optional&lt;T&gt;
+     * flatMap OptionalLong to Optional&lt;T&gt;
      */
     public static <T> Optional<T> flatMapToObj(OptionalLong opt, LongFunction<Optional<T>> mapper) {
         requireNonNull(mapper);
@@ -276,7 +276,7 @@ public class OptionalExtensions {
     // OptionalDouble flatMap
 
     /**
-     * flatMap OptionalDouble -> OptionalDouble
+     * flatMap OptionalDouble to OptionalDouble
      */
     public static OptionalDouble flatMap(OptionalDouble opt, DoubleFunction<OptionalDouble> mapper) {
         requireNonNull(mapper);
@@ -284,7 +284,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalDouble -> OptionalInt
+     * flatMap OptionalDouble to OptionalInt
      */
     public static OptionalInt flatMapToInt(OptionalDouble opt, DoubleFunction<OptionalInt> mapper) {
         requireNonNull(mapper);
@@ -292,7 +292,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalDouble -> OptionalLong
+     * flatMap OptionalDouble to OptionalLong
      */
     public static OptionalLong flatMapToLong(OptionalDouble opt, DoubleFunction<OptionalLong> mapper) {
         requireNonNull(mapper);
@@ -300,7 +300,7 @@ public class OptionalExtensions {
     }
 
     /**
-     * flatMap OptionalDouble -> Optional&lt;T&gt;
+     * flatMap OptionalDouble to Optional&lt;T&gt;
      */
     public static <T> Optional<T> flatMapToObj(OptionalDouble opt, DoubleFunction<Optional<T>> mapper) {
         requireNonNull(mapper);
