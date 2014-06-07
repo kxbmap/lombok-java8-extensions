@@ -156,4 +156,98 @@ public class OptionalExtensionsTest {
         Optional.of(42).flatMapToDouble(n -> null);
     }
 
+
+    // fold
+
+    @Test
+    public void foldIfPresent() {
+        Optional<Integer> opt = Optional.of(42);
+        assertThat(opt.fold(n -> n + 1, () -> 0), is(43));
+    }
+
+    @Test
+    public void foldIfEmpty() {
+        Optional<Integer> opt = Optional.empty();
+        assertThat(opt.fold(n -> n + 1, () -> 0), is(0));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void foldIfNullMapper() {
+        Optional.empty().fold(null, () -> 0);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void foldIfNullOther() {
+        Optional.of(42).fold(n -> n + 1, null);
+    }
+
+
+    @Test
+    public void foldToIntIfPresent() {
+        Optional<Integer> opt = Optional.of(42);
+        assertThat(opt.foldToInt(n -> n + 1, () -> 0), is(43));
+    }
+
+    @Test
+    public void foldToIntIfEmpty() {
+        Optional<Integer> opt = Optional.empty();
+        assertThat(opt.foldToInt(n -> n + 1, () -> 0), is(0));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void foldToIntIfNullMapper() {
+        Optional.empty().foldToInt(null, () -> 0);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void foldToIntIfNullOther() {
+        Optional.of(42).foldToInt(n -> n + 1, null);
+    }
+
+
+    @Test
+    public void foldToLongIfPresent() {
+        Optional<Integer> opt = Optional.of(42);
+        assertThat(opt.foldToLong(n -> n + 1, () -> 0), is(43L));
+    }
+
+    @Test
+    public void foldToLongIfEmpty() {
+        Optional<Integer> opt = Optional.empty();
+        assertThat(opt.foldToLong(n -> n + 1, () -> 0), is(0L));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void foldToLongIfNullMapper() {
+        Optional.empty().foldToLong(null, () -> 0);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void foldToLongIfNullOther() {
+        Optional.of(42).foldToLong(n -> n + 1, null);
+    }
+
+
+    @Test
+    public void foldToDoubleIfPresent() {
+        Optional<Integer> opt = Optional.of(42);
+        assertThat(opt.foldToDouble(n -> n + 1, () -> 0), is(43d));
+    }
+
+    @Test
+    public void foldToDoubleIfEmpty() {
+        Optional<Integer> opt = Optional.empty();
+        assertThat(opt.foldToDouble(n -> n + 1, () -> 0), is(0d));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void foldToDoubleIfNullMapper() {
+        Optional.empty().foldToDouble(null, () -> 0);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void foldToDoubleIfNullOther() {
+        Optional.of(42).foldToDouble(n -> n + 1, null);
+    }
+
 }

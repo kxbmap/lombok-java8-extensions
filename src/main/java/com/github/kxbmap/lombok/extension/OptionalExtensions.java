@@ -20,7 +20,11 @@ import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
+import java.util.function.DoubleSupplier;
 import java.util.function.Function;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
@@ -83,6 +87,45 @@ public class OptionalExtensions {
     public static <T> OptionalDouble flatMapToDouble(Optional<T> opt, Function<? super T, OptionalDouble> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? requireNonNull(mapper.apply(opt.get())) : OptionalDouble.empty();
+    }
+
+
+    // fold
+
+    /**
+     * fold Optional&lt;T&gt; to R
+     */
+    public static <T, R> R fold(Optional<T> opt, Function<? super T, ? extends R> mapper, Supplier<? extends R> other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.apply(opt.get()) : other.get();
+    }
+
+    /**
+     * fold Optional&lt;T&gt; to int
+     */
+    public static <T> int foldToInt(Optional<T> opt, ToIntFunction<? super T> mapper, IntSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsInt(opt.get()) : other.getAsInt();
+    }
+
+    /**
+     * fold Optional&lt;T&gt; to long
+     */
+    public static <T> long foldToLong(Optional<T> opt, ToLongFunction<? super T> mapper, LongSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsLong(opt.get()) : other.getAsLong();
+    }
+
+    /**
+     * fold Optional&lt;T&gt; to double
+     */
+    public static <T> double foldToDouble(Optional<T> opt, ToDoubleFunction<? super T> mapper, DoubleSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsDouble(opt.get()) : other.getAsDouble();
     }
 
 }

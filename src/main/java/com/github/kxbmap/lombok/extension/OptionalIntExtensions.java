@@ -20,10 +20,14 @@ import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
+import java.util.function.DoubleSupplier;
 import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
 import java.util.function.IntToDoubleFunction;
 import java.util.function.IntToLongFunction;
 import java.util.function.IntUnaryOperator;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
 import static java.util.Objects.requireNonNull;
 
@@ -99,6 +103,45 @@ public class OptionalIntExtensions {
     public static <T> Optional<T> flatMapToObj(OptionalInt opt, IntFunction<Optional<T>> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? requireNonNull(mapper.apply(opt.getAsInt())) : Optional.empty();
+    }
+
+
+    // fold
+
+    /**
+     * fold OptionalInt to int
+     */
+    public static int fold(OptionalInt opt, IntUnaryOperator mapper, IntSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsInt(opt.getAsInt()) : other.getAsInt();
+    }
+
+    /**
+     * fold OptionalInt to long
+     */
+    public static long foldToLong(OptionalInt opt, IntToLongFunction mapper, LongSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsLong(opt.getAsInt()) : other.getAsLong();
+    }
+
+    /**
+     * fold OptionalInt to double
+     */
+    public static double foldToDouble(OptionalInt opt, IntToDoubleFunction mapper, DoubleSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsDouble(opt.getAsInt()) : other.getAsDouble();
+    }
+
+    /**
+     * fold OptionalInt to T
+     */
+    public static <T> T foldToObj(OptionalInt opt, IntFunction<? extends T> mapper, Supplier<? extends T> other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.apply(opt.getAsInt()) : other.get();
     }
 
 }

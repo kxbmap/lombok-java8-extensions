@@ -20,10 +20,14 @@ import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
+import java.util.function.DoubleSupplier;
+import java.util.function.IntSupplier;
 import java.util.function.LongFunction;
+import java.util.function.LongSupplier;
 import java.util.function.LongToDoubleFunction;
 import java.util.function.LongToIntFunction;
 import java.util.function.LongUnaryOperator;
+import java.util.function.Supplier;
 
 import static java.util.Objects.requireNonNull;
 
@@ -99,6 +103,45 @@ public class OptionalLongExtensions {
     public static <T> Optional<T> flatMapToObj(OptionalLong opt, LongFunction<Optional<T>> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? requireNonNull(mapper.apply(opt.getAsLong())) : Optional.empty();
+    }
+
+
+    // fold
+
+    /**
+     * fold OptionalLong to long
+     */
+    public static long fold(OptionalLong opt, LongUnaryOperator mapper, LongSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsLong(opt.getAsLong()) : other.getAsLong();
+    }
+
+    /**
+     * fold OptionalLong to int
+     */
+    public static int foldToInt(OptionalLong opt, LongToIntFunction mapper, IntSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsInt(opt.getAsLong()) : other.getAsInt();
+    }
+
+    /**
+     * fold OptionalLong to double
+     */
+    public static double foldToDouble(OptionalLong opt, LongToDoubleFunction mapper, DoubleSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsDouble(opt.getAsLong()) : other.getAsDouble();
+    }
+
+    /**
+     * fold OptionalLong to T
+     */
+    public static <T> T foldToObj(OptionalLong opt, LongFunction<? extends T> mapper, Supplier<? extends T> other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.apply(opt.getAsLong()) : other.get();
     }
 
 }

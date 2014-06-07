@@ -21,9 +21,13 @@ import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
 import java.util.function.DoubleFunction;
+import java.util.function.DoubleSupplier;
 import java.util.function.DoubleToIntFunction;
 import java.util.function.DoubleToLongFunction;
 import java.util.function.DoubleUnaryOperator;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
 import static java.util.Objects.requireNonNull;
 
@@ -99,6 +103,45 @@ public class OptionalDoubleExtension {
     public static <T> Optional<T> flatMapToObj(OptionalDouble opt, DoubleFunction<Optional<T>> mapper) {
         requireNonNull(mapper);
         return opt.isPresent() ? requireNonNull(mapper.apply(opt.getAsDouble())) : Optional.empty();
+    }
+
+
+    // fold
+
+    /**
+     * fold OptionalDouble to double
+     */
+    public static double fold(OptionalDouble opt, DoubleUnaryOperator mapper, DoubleSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsDouble(opt.getAsDouble()) : other.getAsDouble();
+    }
+
+    /**
+     * fold OptionalDouble to int
+     */
+    public static int foldToInt(OptionalDouble opt, DoubleToIntFunction mapper, IntSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsInt(opt.getAsDouble()) : other.getAsInt();
+    }
+
+    /**
+     * fold OptionalDouble to long
+     */
+    public static long foldToLong(OptionalDouble opt, DoubleToLongFunction mapper, LongSupplier other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.applyAsLong(opt.getAsDouble()) : other.getAsLong();
+    }
+
+    /**
+     * fold OptionalDouble to T
+     */
+    public static <T> T foldToObj(OptionalDouble opt, DoubleFunction<T> mapper, Supplier<T> other) {
+        requireNonNull(mapper);
+        requireNonNull(other);
+        return opt.isPresent() ? mapper.apply(opt.getAsDouble()) : other.get();
     }
 
 }
