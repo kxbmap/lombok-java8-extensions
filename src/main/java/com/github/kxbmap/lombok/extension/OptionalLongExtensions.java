@@ -144,4 +144,21 @@ public class OptionalLongExtensions {
         return opt.isPresent() ? mapper.apply(opt.getAsLong()) : other.get();
     }
 
+
+    /**
+     *
+     */
+    public static boolean isAbsent(OptionalLong opt) {
+        return !opt.isPresent();
+    }
+
+    /**
+     *
+     */
+    public static void ifAbsent(OptionalLong opt, Runnable runnable) {
+        if (!opt.isPresent()) {
+            runnable.run();
+        }
+    }
+
 }

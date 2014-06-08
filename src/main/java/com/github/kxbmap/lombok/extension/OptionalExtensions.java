@@ -128,4 +128,22 @@ public class OptionalExtensions {
         return opt.isPresent() ? mapper.applyAsDouble(opt.get()) : other.getAsDouble();
     }
 
+
+    /**
+     *
+     */
+    public static <T> boolean isAbsent(Optional<T> opt) {
+        return !opt.isPresent();
+    }
+
+    /**
+     *
+     */
+    public static <T> void ifAbsent(Optional<T> opt, Runnable runnable) {
+        if (!opt.isPresent()) {
+            runnable.run();
+        }
+    }
+
+
 }

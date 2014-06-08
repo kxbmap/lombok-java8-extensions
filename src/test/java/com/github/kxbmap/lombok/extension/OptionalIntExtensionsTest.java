@@ -17,6 +17,7 @@
 package com.github.kxbmap.lombok.extension;
 
 import lombok.experimental.ExtensionMethod;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Optional;
@@ -26,6 +27,7 @@ import java.util.OptionalLong;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 @ExtensionMethod(OptionalIntExtensions.class)
 public class OptionalIntExtensionsTest {
@@ -295,6 +297,35 @@ public class OptionalIntExtensionsTest {
     @Test(expected = NullPointerException.class)
     public void foldToObjIfNullOther() {
         OptionalInt.of(42).foldToObj(n -> n + 1, null);
+    }
+
+
+    // isAbsent
+
+    @Test
+    public void isAbsentIfPresent() {
+        assertThat(OptionalInt.of(42).isAbsent(), is(false));
+    }
+
+    @Test
+    public void isAbsentIfEmpty() {
+        assertThat(OptionalInt.empty().isAbsent(), is(true));
+    }
+
+
+    // ifAbsent
+
+    @Test
+    public void ifAbsentIfPresent() {
+        OptionalInt.of(42).ifAbsent(Assert::fail);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void ifAbsentIfEmpty() {
+        OptionalInt.empty().ifAbsent(() -> {
+            throw new RuntimeException();
+        });
+        fail();
     }
 
 }

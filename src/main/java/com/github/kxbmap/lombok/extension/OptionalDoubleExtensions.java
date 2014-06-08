@@ -144,4 +144,21 @@ public class OptionalDoubleExtensions {
         return opt.isPresent() ? mapper.apply(opt.getAsDouble()) : other.get();
     }
 
+
+    /**
+     *
+     */
+    public static boolean isAbsent(OptionalDouble opt) {
+        return !opt.isPresent();
+    }
+
+    /**
+     *
+     */
+    public static void ifAbsent(OptionalDouble opt, Runnable runnable) {
+        if (!opt.isPresent()) {
+            runnable.run();
+        }
+    }
+
 }

@@ -144,4 +144,21 @@ public class OptionalIntExtensions {
         return opt.isPresent() ? mapper.apply(opt.getAsInt()) : other.get();
     }
 
+
+    /**
+     *
+     */
+    public static boolean isAbsent(OptionalInt opt) {
+        return !opt.isPresent();
+    }
+
+    /**
+     *
+     */
+    public static void ifAbsent(OptionalInt opt, Runnable runnable) {
+        if (!opt.isPresent()) {
+            runnable.run();
+        }
+    }
+
 }
