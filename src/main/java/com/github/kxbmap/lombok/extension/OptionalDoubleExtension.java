@@ -138,7 +138,7 @@ public class OptionalDoubleExtension {
     /**
      * fold OptionalDouble to T
      */
-    public static <T> T foldToObj(OptionalDouble opt, DoubleFunction<T> mapper, Supplier<T> other) {
+    public static <T> T foldToObj(OptionalDouble opt, DoubleFunction<? extends T> mapper, Supplier<? extends T> other) {
         requireNonNull(mapper);
         requireNonNull(other);
         return opt.isPresent() ? mapper.apply(opt.getAsDouble()) : other.get();
