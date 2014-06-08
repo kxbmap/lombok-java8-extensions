@@ -334,7 +334,10 @@ public class OptionalLongExtensionsTest {
     @Test(expected = RuntimeException.class)
     public void consumeIfPresent() {
         OptionalLong.of(42).consume(
-            n -> { throw new RuntimeException(); },
+            n -> {
+                assertThat(n, is(42L));
+                throw new RuntimeException();
+            },
             Assert::fail
         );
     }
@@ -343,7 +346,9 @@ public class OptionalLongExtensionsTest {
     public void consumeIfEmpty() {
         OptionalLong.empty().consume(
             n -> fail(),
-            () -> { throw new RuntimeException(); }
+            () -> {
+                throw new RuntimeException();
+            }
         );
     }
 

@@ -287,7 +287,10 @@ public class OptionalExtensionsTest {
     @Test(expected = RuntimeException.class)
     public void consumeIfPresent() {
         Optional.of(42).consume(
-            n -> { throw new RuntimeException(); },
+            n -> {
+                assertThat(n, is(42));
+                throw new RuntimeException();
+            },
             Assert::fail
         );
     }
@@ -296,7 +299,9 @@ public class OptionalExtensionsTest {
     public void consumeIfEmpty() {
         Optional.empty().consume(
             n -> fail(),
-            () -> { throw new RuntimeException(); }
+            () -> {
+                throw new RuntimeException();
+            }
         );
     }
 
