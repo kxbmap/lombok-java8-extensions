@@ -34,7 +34,7 @@ import static java.util.Objects.requireNonNull;
 /**
  * @see lombok.experimental.ExtensionMethod
  */
-public class OptionalDoubleExtension {
+public class OptionalDoubleExtensions {
 
     // map
 
