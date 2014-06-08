@@ -27,7 +27,7 @@ import java.util.OptionalLong;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-@ExtensionMethod(OptionalExtensions.class)
+@ExtensionMethod(OptionalDoubleExtension.class)
 public class OptionalDoubleExtensionsTest {
 
     // map
