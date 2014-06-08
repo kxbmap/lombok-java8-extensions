@@ -328,4 +328,23 @@ public class OptionalDoubleExtensionsTest {
         fail();
     }
 
+
+    // consume
+
+    @Test(expected = RuntimeException.class)
+    public void consumeIfPresent() {
+        OptionalDouble.of(42).consume(
+            n -> { throw new RuntimeException(); },
+            Assert::fail
+        );
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void consumeIfEmpty() {
+        OptionalDouble.empty().consume(
+            n -> fail(),
+            () -> { throw new RuntimeException(); }
+        );
+    }
+
 }

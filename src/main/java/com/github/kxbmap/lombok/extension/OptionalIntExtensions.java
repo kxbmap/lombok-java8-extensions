@@ -21,6 +21,7 @@ import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
 import java.util.function.DoubleSupplier;
+import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
 import java.util.function.IntSupplier;
 import java.util.function.IntToDoubleFunction;
@@ -157,6 +158,17 @@ public class OptionalIntExtensions {
      */
     public static void ifAbsent(OptionalInt opt, Runnable runnable) {
         if (!opt.isPresent()) {
+            runnable.run();
+        }
+    }
+
+    /**
+     *
+     */
+    public static void consume(OptionalInt opt, IntConsumer consumer, Runnable runnable) {
+        if (opt.isPresent()) {
+            consumer.accept(opt.getAsInt());
+        } else {
             runnable.run();
         }
     }

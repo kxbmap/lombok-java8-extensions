@@ -328,4 +328,23 @@ public class OptionalLongExtensionsTest {
         fail();
     }
 
+
+    // consume
+
+    @Test(expected = RuntimeException.class)
+    public void consumeIfPresent() {
+        OptionalLong.of(42).consume(
+            n -> { throw new RuntimeException(); },
+            Assert::fail
+        );
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void consumeIfEmpty() {
+        OptionalLong.empty().consume(
+            n -> fail(),
+            () -> { throw new RuntimeException(); }
+        );
+    }
+
 }

@@ -328,4 +328,23 @@ public class OptionalIntExtensionsTest {
         fail();
     }
 
+
+    // consume
+
+    @Test(expected = RuntimeException.class)
+    public void consumeIfPresent() {
+        OptionalInt.of(42).consume(
+            n -> { throw new RuntimeException(); },
+            Assert::fail
+        );
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void consumeIfEmpty() {
+        OptionalInt.empty().consume(
+            n -> fail(),
+            () -> { throw new RuntimeException(); }
+        );
+    }
+
 }

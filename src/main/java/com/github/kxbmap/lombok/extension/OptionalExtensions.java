@@ -20,6 +20,7 @@ import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
+import java.util.function.Consumer;
 import java.util.function.DoubleSupplier;
 import java.util.function.Function;
 import java.util.function.IntSupplier;
@@ -145,5 +146,15 @@ public class OptionalExtensions {
         }
     }
 
+    /**
+     *
+     */
+    public static <T> void consume(Optional<T> opt, Consumer<? super T> consumer, Runnable runnable) {
+        if (opt.isPresent()) {
+            consumer.accept(opt.get());
+        } else {
+            runnable.run();
+        }
+    }
 
 }
